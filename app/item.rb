@@ -12,7 +12,7 @@ class Item
     @@all
   end
 
-  def sell.item_names
+  def self.item_names
     self.all.map {|item| item.name}
   end
 
