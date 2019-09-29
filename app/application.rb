@@ -5,7 +5,7 @@ class Application
     if req.path.match(/items/)
       search_item = req.path.split("/items/").last
       if Item.all.include?(search_item)
-        resp.write "#{Item.all {|item| item.price if item.name = search_item}}"
+        resp.write "#{Item.all {|item| item.price if item.name == search_item}}"
       else
         resp.write "Item not found"
         resp.status = 400
