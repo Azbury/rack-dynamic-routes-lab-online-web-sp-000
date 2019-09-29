@@ -1,5 +1,3 @@
-require "pry"
-
 class Application
   def call (env)
     resp = Rack::Response.new
@@ -7,7 +5,6 @@ class Application
     if req.path.match(/items/)
       search_item = req.params["q"]
       if Item.all.include?(search_item)
-        binding.pry
         resp.write "#{Item.all {|item| item.price if item.name = search_item}}"
       else
         resp.write "Item not found"
