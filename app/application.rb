@@ -4,7 +4,7 @@ class Application
     req = Rack::Request.new(env)
     if req.path.match(/items/)
       search_item = req.path.split("/items/").last
-      if Item.all {|item| true if item.name == search_item else false end}
+      if Item.all {|item| if item.name == search_item true else false end}
         resp.write "#{Item.all {|item| item.price if item.name == search_item}}"
       else
         resp.write "Item not found"
