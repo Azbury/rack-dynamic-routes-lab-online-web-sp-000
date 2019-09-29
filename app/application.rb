@@ -3,7 +3,7 @@ class Application
     resp = Rack::Response.new
     req = Rack::Request.new(env)
     if req.path.match(/items/)
-      search_item = req.params["q"]
+      search_item = req.params["item name"]
       puts search_item
       if Item.all.include?(search_item)
         resp.write "#{Item.all {|item| item.price if item.name = search_item}}"
